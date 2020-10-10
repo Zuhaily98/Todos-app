@@ -14,6 +14,6 @@ class TodosSeeder extends Seeder
     public function run()
     {
         // factory('App/Todo', 10)->create();
-        \App\Models\Todo::factory()->count(10)->create();
+        \App\Models\Todo::factory()->count(5)->create();
     }
 }
