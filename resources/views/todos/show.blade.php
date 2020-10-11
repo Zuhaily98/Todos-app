@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title')
+
+    Single Todo: {{$todo->name}}
+
+@endsection
+
 @section('content')
 
 <h1 class="text-center my-5">

@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title')
+
+    Todos List
+
+@endsection
+
 @section('content')
 
 <h1 class="text-center my-5">Todos Page</h1> <!-- my-5 means margin y of 5 -->
