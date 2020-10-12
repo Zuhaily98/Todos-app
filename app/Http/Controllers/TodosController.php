@@ -26,6 +26,12 @@ class TodosController extends Controller
 
     public function store()
     {
+        // to make sure user must fill in the form before submitting
+        $this->validate(request(), [
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
         // dd(request()->all());    to check data
         
         $data = request()->all(); 
