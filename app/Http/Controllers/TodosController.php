@@ -18,4 +18,27 @@ class TodosController extends Controller
     {
         return view('todos.show')->with('todo', Todo::find($todoid));
     }
+
+    public function create()
+    {
+        return view('todos.create');
+    }
+
+    public function store()
+    {
+        // dd(request()->all());    to check data
+        
+        $data = request()->all(); 
+
+        $todo = new Todo(); //create a new instance of the model
+
+        $todo->name = $data['name']; //assign value from form to db
+        $todo->description = $data['description'];
+        $todo->completed = false; //completed is assigned as false by default
+
+        $todo->save();  //db query to save the $todo into db
+
+        return redirect('/todos'); //after saving a new todo, user will redirect to the todos page
+
+    }
 }

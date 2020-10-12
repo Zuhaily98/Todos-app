@@ -33,6 +33,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/todos">todos <span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/new-todos">Create todos <span class="sr-only">(current)</span></a>
+                </li>
             </ul>
             
         </div>
