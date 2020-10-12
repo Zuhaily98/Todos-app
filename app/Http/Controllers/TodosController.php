@@ -27,8 +27,9 @@ class TodosController extends Controller
     public function store()
     {
         // to make sure user must fill in the form before submitting
+        // by using "|", more validation rules can be added
         $this->validate(request(), [
-            'name' => 'required',
+            'name' => 'required|min:4|max:15',
             'description' => 'required'
         ]);
 

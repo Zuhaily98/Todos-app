@@ -10,10 +10,22 @@
             <div class="card card-header">Create new todo</div>
             <div class="card card-body">
 
+                @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="list-group">
+                        @foreach($errors->all() as $error)
+                        <li class="list-group-item">
+                            {{ $error }}
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
                 <form action="/store-todos" method="POST">
-                <!-- action is the url to handle POST request. can name the url anything. then go to route file -->
+                    <!-- action is the url to handle POST request. can name the url anything. then go to route file -->
                     <!-- .frm    to create form -->
-                    @csrf 
+                    @csrf
                     <!-- to make sure token is secret, and for laravel to make sure the input is from the website itself -->
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Name" name="name">
