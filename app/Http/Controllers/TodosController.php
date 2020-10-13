@@ -48,4 +48,29 @@ class TodosController extends Controller
         return redirect('/todos'); //after saving a new todo, user will redirect to the todos page
 
     }
+
+    public function edit($todoid)
+    {
+        return view('todos.edit')->with('todo', Todo::find($todoid)); //find($todoid) is used to find the specific id
+    }
+
+    public function update($todoid)
+    {
+        $this->validate(request(), [
+            'name' => 'required|min:4|max:15',
+            'description' => 'required'
+        ]);
+        
+        $data = request()->all();  //get the data
+
+        $todo = Todo::find($todoid); //create a new instance of the model
+
+        $todo->name = $data['name']; 
+        $todo->description = $data['description'];
+
+        $todo->save();  
+
+        return redirect('/todos'); 
+
+    }
 }

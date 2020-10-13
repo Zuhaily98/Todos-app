@@ -2,7 +2,7 @@
 
 @section('title')
 
-    Single Todo: {{$todo->name}}
+Single Todo: {{$todo->name}}
 
 @endsection
 
@@ -18,11 +18,14 @@
             <div class="card card-header">
                 Details
             </div>
+
+            <div class="card card-body">
+                {{ $todo->description }}
+            </div>
         </div>
 
-        <div class="card card-body">
-            {{ $todo->description }}
-        </div>
+        <a href="/todos/{{ $todo->id }}/edit" class="btn btn-info btn-sm my-2">Edit</a>
+
     </div>
 </div>
 

@@ -19,5 +19,9 @@ Route::get('/', function () {
 
 Route::get('todos', 'TodosController@index');
 Route::get('todos/{todo}', 'TodosController@show'); //the curly braces is for the dynamic route
+
 Route::get('new-todos', 'TodosController@create');  //display the form for creating a todo
 Route::post('store-todos', 'TodosController@store'); //save the todo to db
+
+Route::get('todos/{todo}/edit', 'TodosController@edit');
+Route::post('todos/{todo}/update-todos', 'TodosController@update');
