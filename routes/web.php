@@ -25,3 +25,5 @@ Route::post('store-todos', 'TodosController@store'); //save the todo to db
 
 Route::get('todos/{todo}/edit', 'TodosController@edit');
 Route::post('todos/{todo}/update-todos', 'TodosController@update');
+
+Route::get('todos/{todo}/delete', 'TodosController@destroy');

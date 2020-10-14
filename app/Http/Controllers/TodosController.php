@@ -73,4 +73,13 @@ class TodosController extends Controller
         return redirect('/todos'); 
 
     }
+
+    public function destroy($todoid) //since there is dynamic url in the route, must include it as a parameter for this function
+    {
+        $todo = Todo::find($todoid);
+
+        $todo->delete(); //delete() is a laravel function that will run the query to delete the selected record from database
+
+        return redirect('/todos');
+    }
 }
