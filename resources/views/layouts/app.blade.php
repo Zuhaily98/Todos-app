@@ -37,11 +37,18 @@
                     <a class="nav-link" href="/new-todos">Create todos <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
-            
+
         </div>
     </nav>
 
     <div class="container">
+
+        @if(session()->has('success'))
+            <div class="alert alert-success">
+                {{ session()->get('success') }}
+            </div>
+        @endif
+
         @yield('content')
     </div>
 </body>

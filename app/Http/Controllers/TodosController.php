@@ -45,6 +45,8 @@ class TodosController extends Controller
 
         $todo->save();  //db query to save the $todo into db
 
+        session()->flash('success','Todo created successfully!');
+
         return redirect('/todos'); //after saving a new todo, user will redirect to the todos page
 
     }
@@ -70,7 +72,9 @@ class TodosController extends Controller
         $todo->name = $data['name']; 
         $todo->description = $data['description'];
 
-        $todo->save();  
+        $todo->save();
+        
+        session()->flash('success','Todo updated successfully!');
 
         return redirect('/todos'); 
 
@@ -79,6 +83,8 @@ class TodosController extends Controller
     public function destroy(Todo $todo) //since there is dynamic url in the route, must include it as a parameter for this function
     {
         $todo->delete(); //delete() is a laravel function that will run the query to delete the selected record from database
+
+        session()->flash('success','Todo deleted successfully!');
 
         return redirect('/todos');
     }
