@@ -49,12 +49,16 @@ class TodosController extends Controller
 
     }
 
-    public function edit($todoid)
+    //route model binding
+    //1:make sure all the dynamic url are the same
+    //2:change $todoid into Todo $todo
+    //laravel will automatically search for the spesific todo in the db 
+    public function edit(Todo $todo)
     {
-        return view('todos.edit')->with('todo', Todo::find($todoid)); //find($todoid) is used to find the specific id
+        return view('todos.edit')->with('todo', $todo); //find($todoid) is used to find the specific id
     }
 
-    public function update($todoid)
+    public function update(Todo $todo)
     {
         $this->validate(request(), [
             'name' => 'required|min:4|max:15',
@@ -62,8 +66,6 @@ class TodosController extends Controller
         ]);
         
         $data = request()->all();  //get the data
-
-        $todo = Todo::find($todoid); //create a new instance of the model
 
         $todo->name = $data['name']; 
         $todo->description = $data['description'];
@@ -74,10 +76,8 @@ class TodosController extends Controller
 
     }
 
-    public function destroy($todoid) //since there is dynamic url in the route, must include it as a parameter for this function
+    public function destroy(Todo $todo) //since there is dynamic url in the route, must include it as a parameter for this function
     {
-        $todo = Todo::find($todoid);
-
         $todo->delete(); //delete() is a laravel function that will run the query to delete the selected record from database
 
         return redirect('/todos');
